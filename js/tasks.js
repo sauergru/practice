@@ -665,3 +665,181 @@
 // console.log(phone.price);
 // phone.price = 34000;
 // console.log(phone.price);
+
+
+
+
+// При натисканні на кнопку "SHOW ME", потрібно за допомогою alert
+// вивести значення, яке будемо вводити в інпут.
+
+// При натисканні на кнопку "SHOW ME", потрібно в консоль
+// вивести значення, яке будемо вводити в інпут.
+
+// const btn = document.querySelector("#alertButton");
+// const input = document.querySelector("#alertInput");
+
+// btn.addEventListener("click", handleClick);
+
+// function handleClick() {
+// alert(input.value)
+// }
+
+
+
+
+// При натисканні на кнопку "Приховати" потрібно введені користувачем
+// символи в інпут відображати у вигляді крапок замість звичайного
+// тексту, а також змінити назву кнопки на "Показати", при повторному
+// натисканні знову будемо відображати символи, а назва кнопки зміниться
+// на "Приховати".
+
+// const passInput = document.querySelector('#passwordInput');
+// const passBtn = document.querySelector('#passwordButton');
+
+// passBtn.addEventListener('click', handleClick);
+
+// function handleClick(event) {
+//     if (passInput.type === 'text') {
+//         passInput.type = 'password';
+//         event.target.textContent = 'Показати';
+//         return;
+//     }
+//     passInput.type = 'text';
+//     event.target.textContent = 'Приховати';
+// }
+// console.dir(passBtn);
+
+
+
+
+// Кнопка "Зменшити" повинна зменшувати квадрат на 10 пікселів.
+// Кнопка "Збільшити" повинна збільшувати квадрат на 10 пікселів.
+
+// const box = document.querySelector('#box');
+// const decrease = document.querySelector('#decrease');
+// const increase = document.querySelector('#increase');
+
+// decrease.addEventListener('click', onDecrease);
+// increase.addEventListener('click', onIncrease);
+
+// function onDecrease(event) {
+//     const { offsetHeight, offsetWidth } = box;
+//     box.style.height = `${offsetHeight - 10}px`;
+//     box.style.width = `${offsetWidth - 10}px`;
+// }
+
+// function onIncrease(event) {
+//     const { offsetHeight, offsetWidth } = box;
+//     box.style.height = `${offsetHeight + 10}px`;
+//     box.style.width = `${offsetWidth + 10}px`;
+// }
+
+
+
+
+
+// При кліку на кнопку "Подвоїти" збільшувати значення в кожному
+// елементі списку в два рази.
+
+// const listItem = document.querySelectorAll('.listItem');
+// const btn = document.querySelector('#double');
+
+// btn.addEventListener('click', handleClick);
+
+// function handleClick(event) {
+//     listItem.forEach(item => item.textContent = item.textContent * 2);
+// }
+
+
+
+
+// Наведено список людей. Зроби можливість фільтрації (пошуку) за ім'ям або за прізвищем.
+
+// const list = document.querySelector('.contacts');
+// const contactsInput = document.querySelector('.contactsFilter');
+// const contacts = document.querySelectorAll('.contact');
+
+// contactsInput.addEventListener('input', onInput);
+
+// function onInput(event) {
+//     const value = event.target.value.toLowerCase().trim();
+//     const filteredItems = [...contacts]
+//         .filter(el => el.textContent.toLowerCase().includes(value))
+    
+//     list.innerHTML = '';
+//     list.append(...filteredItems);
+// }
+
+
+
+
+// При кліку на кнопку "Filter" потрібно видалити з списку позначені елементи.
+
+// const form = document.querySelector('.checkboxForm');
+// const wrapper = document.querySelector('.checkboxWrapper');
+
+// form.addEventListener('submit', handleSubmit);
+
+// function handleSubmit(event) {
+//     event.preventDefault();
+//     const filteredItems = [...wrapper]
+//         .filter(item => item.lastElementChild.checked)
+    
+//     filteredItems.forEach(item => item.remove())
+
+// }
+
+
+
+
+// Створіть сторінку, на якій користувач може вводити замітки
+// в поле введення.Після введення замітки та кліку на кнопку
+// \"Додати", введена замітка повинна додаватися до списку нижче.
+// Якщо в поле нічого не введено сабміт не відбувається і
+// виводиться повідомлення 'Будь ласка, введіть текст замітки.'
+// Текст замітки має бути обрізан від пробілів по краях.
+
+// const form = document.querySelector('#noteForm');
+// const input = document.querySelector('#noteInput');
+// const list = document.querySelector('#noteList');
+
+// form.addEventListener('submit', handleSubmit);
+
+// function handleSubmit(event) {
+//     event.preventDefault();
+//     const info = input.value.trim();
+//     if(info === '') {
+//         alert('Будь ласка, введіть текст замітки.');
+//         return;
+//     }
+//     const newNote = document.createElement('li');
+//     newNote.textContent = info;
+//     list.appendChild(newNote);
+//     input.value = '';
+// }
+
+
+
+
+// Є форма для замовлення продуктів. Вона містить перелік  продуктів,
+// кожен з яких має власний чекбокс та ціну яка зберігається
+// у властивості value. Користувач може вибрати бажані продукти,
+// після натискання кнопки "Додати у кошик" потрібно вивести суму
+// замовлення в спан з ідентифікатором "totalAmount".
+
+// const form = document.querySelector('#orderForm');
+// const input = document.querySelectorAll('.product-checkbox');
+// const span = document.querySelector('#totalAmount');
+
+// form.addEventListener('submit', handleSubmit);
+
+// function handleSubmit(event) {
+//     event.preventDefault();
+//     const amount = [...input]
+//         .filter(item => item.checked)
+//         .reduce((total, item) => {
+//             total += parseFloat(item.value);
+//             return total;
+//         }, 0)
+//     span.textContent = amount;
+// }
