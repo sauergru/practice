@@ -843,3 +843,168 @@
 //         }, 0)
 //     span.textContent = amount;
 // }
+
+
+
+
+
+// Додай функціонал зміни теми при натисканні(подія change) на чекбокс
+// #theme-switch-toggle у тулбарі.
+// За замовчуванням тема світла.
+// При зміні теми необхідно додавати на елемент body клас light-theme або dark-theme.
+// Вибрана тема повинна зберігатись між перезавантаженнями сторінки.
+// Для зберігання теми використовуй localStorage.
+// Якщо при завантаженні сторінки тема темна, не забудь поставити властивість checked
+// у чекбоксу #theme -switch-toggle у true, щоб повзунок зрушив у правильне положення.
+// Для зручності зберігання списку використовуй такий перелік.
+
+// const theme = {
+//   LIGHT: "light-theme",
+//   DARK: "dark-theme",
+// };
+
+// const body = document.querySelector("body");
+// const checkBox = document.querySelector("#theme-switch-toggle");
+// checkBox.addEventListener("change", changehHandler);
+// const currentTheme = localStorage.getItem("theme");
+// console.log("load:", currentTheme);
+
+// function changehHandler(event) {
+
+//   if (event.currentTarget.checked) {
+//     body.classList.remove(theme.LIGHT);
+//     body.classList.add(theme.DARK);
+//     localStorage.setItem("theme", theme.DARK);
+//     return;
+//   }
+
+//   body.classList.remove(theme.DARK);
+//   body.classList.add(theme.LIGHT);
+//   localStorage.setItem("theme", theme.LIGHT);
+// }
+
+// if (currentTheme) {
+//   body.classList.add(currentTheme);
+// } else {
+//   body.classList.add(theme.LIGHT);
+// }
+
+// if (currentTheme === theme.DARK) {
+//   checkBox.checked = true;
+// }
+
+
+
+
+// * Якщо імейл і пароль користувача збігаються, при сабміті зберігай дані з форми
+// * у локальне сховище і змінюй кнопку login на logout і роби поля введення
+// * Недоступними для зміни.
+// * При перезавантаженні сторінки, якщо користувач залогінений, ми повинні бачити logout-кнопку
+// * та недоступні для зміни поля з даними користувача.
+// * Клік по кнопці logout повертає все в початковий вигляд і видаляє дані користувача
+// * З локального сховища.
+// *
+// * Якщо введені дані не збігаються з потрібними даними, викликати аlert і
+// * повідомляти про помилку.
+
+// const form = document.querySelector("#login-form");
+
+// const userData = {
+//     email: "user@mail.com",
+//     password: "111",
+// }
+
+// form.addEventListener("submit", handleSubmit);
+
+// function handleSubmit(event) {
+//     event.preventDefault();
+//     if (JSON.parse(localStorage.getItem("savedLogInData"))) {
+//         form.elements.email.disabled = false;
+//         form.elements.password.disabled = false;
+//         form.elements.button.textContent = "Login";
+//         form.reset();
+//         localStorage.removeItem("savedLogInData");
+//         return;
+//     }
+//     if (form.elements.email.value !== userData.email || form.elements.password.value !== userData.password) {
+//         alert("Ви ввели неправильні дані");
+//         return;
+//     }
+//     const data = {
+//         email: form.elements.email.value,
+//         password: form.elements.password.value,
+//     }
+//     localStorage.setItem("savedLogInData", JSON.stringify(data));
+//     form.elements.email.disabled = true;
+//     form.elements.password.disabled = true;
+//     form.elements.button.textContent = "Log Out";
+// }
+
+// const savedData = JSON.parse(localStorage.getItem("savedLogInData"))
+// if (savedData) {
+//     form.elements.email.disabled = true;
+//     form.elements.password.disabled = true;
+//     form.elements.button.textContent = "Log Out";
+//     form.elements.email.value = savedData.email;
+//     form.elements.password.value = savedData.password;
+// }
+
+
+
+
+// За допомогою prompt запропонуйте користувачу ввести значення.
+// Створіть функцію checkValue(value), всередині якої буде Promise
+// Якщо введене користувачем значення не є числом, потрібно відхилити проміс і логувати 'error'
+// Якщо введене користувачем значення є число і воно парне, розв'язуй проміс і повертай 'even'
+// через 1 секунду.
+// Якщо введене користувачем значення є число і воно не парне, розв'язуй проміс і повертай 'odd'
+// через 2 секунди.
+
+// const value = prompt("Введіть число");
+// console.log(isNaN(value));
+
+// function checkValue(value) {
+//     return new Promise((resolve, reject) => {
+//         if (!isNaN(value)) {
+//             value % 2 === 0
+//                 ? setTimeout(() => resolve("even"), 1000)
+//                 : setTimeout(() => resolve("odd"), 2000);
+//         } else {
+//             reject("error");
+//        }
+//     })
+// }
+// checkValue(value)
+//     .then(value => console.log(value))
+//     .catch(error => console.log(error));
+
+
+
+
+// Потрібно створити функцію sumArray, яка приймає масив чисел.
+// Функція повинна повернути проміс, який виконується зі сумою
+// всіх чисел у масиві.Проте, якщо масив містить хоча б одне
+// нечислове значення, проміс повинен бути відхилений з
+// повідомленням про помилку "Масив містить нечислові значення".
+
+// const numbers1 = [1, 2, 3, 4, 5];
+// const numbers2 = [1, 2, 'three', 4, 5];
+// const numbers3 = [];
+
+// function sumArray(numbers) {
+//     return new Promise((resolve, reject) => {
+//         const hasNotNumber = numbers.some(num => isNaN(num))
+//         if (!hasNotNumber) {
+//             const res = numbers.reduce((sum, num) => sum + num, 0)
+//             resolve(res);
+//         } else {
+//             reject("Масив містить нечислові значення");
+//         }
+//     })
+// }
+// sumArray(numbers1)
+//     .then(res => console.log(res))
+//     .catch(error => console.log(error));
+// sumArray(numbers2)
+//     .then(res => console.log(res))
+//     .catch(error => console.log(error));
